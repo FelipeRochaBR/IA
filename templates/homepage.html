@@ -15,7 +15,8 @@
             margin: 0;
             padding: 0;
             background-color: #dddddd;
-            color: white;
+            color: rgb(24, 2, 63);
+            
         }
 
         /* Centraliza todo o conteúdo */
@@ -59,7 +60,6 @@
             left: 0;
             transition: all 0.2s ease;
             pointer-events: none; /* Para que o label não bloqueie o input */
-            margin-bottom: 20px;
         }
 
         .inputUser {
@@ -67,7 +67,7 @@
             border: none;
             border-bottom: 1px solid white;
             outline: none;
-            color: white;
+            color: rgb(24, 2, 63);
             font-size: 15px;
             width: 100%;
             padding: 10px 0;
@@ -134,6 +134,44 @@
             transform: scale(0.95);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+        .radioGroup {
+            margin-top: 30px;
+            width: auto;
+            display: flex;
+            justify-content: space-between; /* Adicionando espaço entre os botões */
+            text-overflow: ellipsis;
+        }
+
+        .radioGroup label {
+            background-color: #e2e1e1;
+            color: rgb(102, 102, 102);
+            padding: 10px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            flex: 1;
+            margin-right: 10px; /* Espaçamento entre os botões */
+        }
+
+        .radioGroup label:last-child {
+            margin-right: 0; /* Remover margem direita do último botão */
+        }
+
+        .radioGroup label:hover {
+            background-color: rgb(147, 51, 236);
+            color: white;
+        }
+
+        .radioGroup input[type="radio"] {
+            display: none;
+        }
+
+        .radioGroup input[type="radio"]:checked + label {
+            background-color: rgb(130, 130, 255);
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -153,11 +191,28 @@
                     <input type="text" id="objetivo" name="objetivo" class="inputUser" required>
                     <label for="objetivo" class="labelInput">Objetivo</label>
                 </div>
-                
+
                 <div class="inputBox">
-                    <input type="text" id="metodo" name="metodo" class="inputUser" required>
-                    <label for="metodo" class="labelInput">Método</label>
+                    <input type="text" id="obstaculos" name="obstaculos" class="inputUser" required>
+                    <label for="obstaculos" class="labelInput">Obstáculos</label>
                 </div>
+                
+            </div>
+            <div class="radioGroup">
+                <input type="radio" id="amplitude" name="metodo" value="amplitude" required>
+                <label for="amplitude">Amplitude</label>
+
+                <input type="radio" id="aprofundamentoiterativo" name="metodo" value="aprofundamentoiterativo" required>
+                <label for="aprofundamentoiterativo">Aprofundamento Iterativo</label>
+
+                <input type="radio" id="buscabidirecional" name="metodo" value="buscabidirecional" required>
+                <label for="buscabidirecional">Busca Bidirecional</label>
+                
+                <input type="radio" id="profundidade" name="metodo" value="profundidade" required>
+                <label for="profundidade">Profundidade</label>
+
+                <input type="radio" id="profundidadelimitada" name="metodo" value="pronfundidadelimitada" required>
+                <label for="profundidadelimitada">Profundidade Limitada</label>                
             </div>
 
             <!-- Retângulo -->
