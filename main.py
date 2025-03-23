@@ -1,12 +1,8 @@
-from flask import Flask 
-import backEnd.mainGrid as principal
+from flask import Flask, request, render_template, url_for, redirect
 
 app = Flask(__name__)
 
 from views import *
 
-#def teste() :
- #  print('',principal.caminho) 
-
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
