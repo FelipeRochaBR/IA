@@ -56,10 +56,8 @@
             font-size: 14px;
             color: #323b32;
             position: absolute;
-            top: 10px;
+            top: -12px;
             left: 0;
-            transition: all 0.2s ease;
-            pointer-events: none; /* Para que o label não bloqueie o input */
         }
 
         .inputUser {
@@ -72,18 +70,11 @@
             width: 100%;
             padding: 10px 0;
             letter-spacing: 2px;
-        }
-
-        .inputUser:focus {
             border-bottom: 1px solid #2a2e2a;
         }
-
-        /* Quando o campo estiver focado ou tiver um valor, o label sobe */
-        .inputBox input:focus + .labelInput,
-        .inputBox input:valid + .labelInput {
-            top: -15px;
-            font-size: 12px;
-            color: #243024;
+       
+        .placeholder {
+            font-size: 7px;
         }
 
         /* Retângulo */
@@ -183,19 +174,32 @@
         <form action="homepage.html" method="POST">
             <div class="input-container">
                 <div class="inputBox">
-                    <input type="text" id="inicio" name="inicio" class="inputUser" required>
-                    <label for="inicio" class="labelInput">Início</label>
+                    <input type="text" id="inicio" name="inicio" class="inputUser" placeholder="Digite aqui..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="inicio" class="labelInput">Início:</label>
                 </div>
                 
                 <div class="inputBox">
-                    <input type="text" id="objetivo" name="objetivo" class="inputUser" required>
-                    <label for="objetivo" class="labelInput">Objetivo</label>
+                    <input type="text" id="objetivo" name="objetivo" class="inputUser" placeholder="Digite aqui..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="objetivo" class="labelInput">Objetivo:</label>
                 </div>
 
                 <div class="inputBox">
-                    <input type="text" id="obstaculos" name="obstaculos" class="inputUser" required>
-                    <label for="obstaculos" class="labelInput">Obstáculos</label>
+                    <input type="text" id="obstaculos" name="obstaculos" class="inputUser" placeholder="Digite aqui..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="obstaculos" class="labelInput">Obstáculos:</label>
                 </div>
+                    <script class="placeholder">
+                        function removerPlaceholder() {
+                            var campo = document.getElementById('campo');
+                            campo.placeholder = '';
+                        }
+                
+                        function adicionarPlaceholder() {
+                            var campo = document.getElementById('campo');
+                            if (campo.value === '') {
+                                campo.placeholder = 'Digite aqui';
+                            }
+                        }
+                    </script>
                 
             </div>
             <div class="radioGroup">
