@@ -71,6 +71,7 @@
             padding: 10px 0;
             letter-spacing: 2px;
             border-bottom: 1px solid #2a2e2a;
+            
         }
        
         .placeholder {
@@ -171,20 +172,31 @@
         <h1>Grid<br><br></h1>
 
         <!-- Campos de entrada -->
-        <form action="homepage.html" method="POST">
+        <form action="/" method="POST">
             <div class="input-container">
+
                 <div class="inputBox">
-                    <input type="text" id="inicio" name="inicio" class="inputUser" placeholder="Digite aqui..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
-                    <label for="inicio" class="labelInput">Início:</label>
-                </div>
-                
-                <div class="inputBox">
-                    <input type="text" id="objetivo" name="objetivo" class="inputUser" placeholder="Digite aqui..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
-                    <label for="objetivo" class="labelInput">Objetivo:</label>
+                    <input type="text" id="inicioX" name="inicioX" class="inputUser" placeholder="Digite o valor de X..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="inicioX" class="labelInput">Início X:</label>
                 </div>
 
                 <div class="inputBox">
-                    <input type="text" id="obstaculos" name="obstaculos" class="inputUser" placeholder="Digite aqui..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <input type="text" id="inicioY" name="inicioY" class="inputUser" placeholder="Digite o valor de Y..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="inicioY" class="labelInput">Início Y:</label>
+                </div>
+                
+                <div class="inputBox">
+                    <input type="text" id="objetivoX" name="objetivoX" class="inputUser" placeholder="Digite o valor de X..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="objetivoX" class="labelInput">Objetivo X:</label>
+                </div>
+
+                <div class="inputBox">
+                    <input type="text" id="objetivoY" name="objetivoY" class="inputUser" placeholder="Digite o valor de Y..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="objetivoY" class="labelInput">Objetivo Y:</label>
+                </div>
+
+                <div class="inputBox">
+                    <input type="text" id="obstaculos" name="obstaculos" class="inputUser" placeholder="Digite aqui o lavor..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
                     <label for="obstaculos" class="labelInput">Obstáculos:</label>
                 </div>
                     <script class="placeholder">
