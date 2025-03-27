@@ -16,7 +16,6 @@
             padding: 0;
             background-color: #dddddd;
             color: #343f34;
-            
         }
 
         /* Centraliza todo o conteúdo */
@@ -31,12 +30,11 @@
         }
 
         h1 {
-    color: #3d4b3d;
-    text-align: left;
-    margin-top: 7px;
-    margin-bottom: 1px; /* Diminui a margem inferior */
-}
-
+            color: #3d4b3d;
+            text-align: left;
+            margin-top: 7px;
+            margin-bottom: 1px; /* Diminui a margem inferior */
+        }
 
         /* Estilo dos inputs */
         .input-container {
@@ -49,7 +47,6 @@
             flex: 1;
             text-align: left;
             position: relative;
-          
         }
 
         .labelInput {
@@ -71,9 +68,8 @@
             padding: 10px 0;
             letter-spacing: 2px;
             border-bottom: 1px solid #2a2e2a;
-            
         }
-       
+
         .placeholder {
             font-size: 7px;
         }
@@ -119,7 +115,6 @@
 
         #submit:hover {
             background-color: #98b998;
-            
         }
 
         #submit:active {
@@ -128,7 +123,6 @@
         }
 
         .radioGroup {
-            margin-top: 30px;
             width: auto;
             display: flex;
             justify-content: space-between; /* Adicionando espaço entre os botões */
@@ -147,7 +141,7 @@
         }
 
         .radioGroup label:last-child {
-            margin-right: 0; /* Remover margem direita do último botão */
+            margin-right: 0; 
         }
 
         .radioGroup label:hover {
@@ -164,6 +158,11 @@
             color: white;
         }
 
+        
+        .hidden {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
@@ -173,62 +172,42 @@
 
         <!-- Campos de entrada -->
         <form action="/" method="POST">
-            <div class="input-container">
 
-                <div class="inputBox">
-                    <input type="text" id="inicioX" name="inicioX" class="inputUser" placeholder="Digite o valor de X..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
-                    <label for="inicioX" class="labelInput">Início X:</label>
-                </div>
-
-                <div class="inputBox">
-                    <input type="text" id="inicioY" name="inicioY" class="inputUser" placeholder="Digite o valor de Y..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
-                    <label for="inicioY" class="labelInput">Início Y:</label>
-                </div>
-                
-                <div class="inputBox">
-                    <input type="text" id="objetivoX" name="objetivoX" class="inputUser" placeholder="Digite o valor de X..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
-                    <label for="objetivoX" class="labelInput">Objetivo X:</label>
-                </div>
-
-                <div class="inputBox">
-                    <input type="text" id="objetivoY" name="objetivoY" class="inputUser" placeholder="Digite o valor de Y..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
-                    <label for="objetivoY" class="labelInput">Objetivo Y:</label>
-                </div>
-
-                <div class="inputBox">
-                    <input type="text" id="obstaculos" name="obstaculos" class="inputUser" placeholder="Digite aqui o lavor..." onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
-                    <label for="obstaculos" class="labelInput">Obstáculos:</label>
-                </div>
-                    <script class="placeholder">
-                        function removerPlaceholder() {
-                            var campo = document.getElementById('campo');
-                            campo.placeholder = '';
-                        }
-                
-                        function adicionarPlaceholder() {
-                            var campo = document.getElementById('campo');
-                            if (campo.value === '') {
-                                campo.placeholder = 'Digite aqui';
-                            }
-                        }
-                    </script>
-                
-            </div>
             <div class="radioGroup">
                 <input type="radio" id="amplitude" name="metodo" value="amplitude" required>
                 <label for="amplitude">Amplitude</label>
 
-                <input type="radio" id="aprofundamentoiterativo" name="metodo" value="aprofundamentoiterativo" required>
+                <input type="radio" id="aprofundamentoiterativo" name="metodo" value="aprof_iterativo" required>
                 <label for="aprofundamentoiterativo">Aprofundamento Iterativo</label>
 
-                <input type="radio" id="buscabidirecional" name="metodo" value="buscabidirecional" required>
+                <input type="radio" id="buscabidirecional" name="metodo" value="bidirecional" required>
                 <label for="buscabidirecional">Busca Bidirecional</label>
                 
                 <input type="radio" id="profundidade" name="metodo" value="profundidade" required>
                 <label for="profundidade">Profundidade</label>
 
-                <input type="radio" id="profundidadelimitada" name="metodo" value="pronfundidadelimitada" required>
+                <input type="radio" id="profundidadelimitada" name="metodo" value="profundidadelimitada" required>
                 <label for="profundidadelimitada">Profundidade Limitada</label>                
+            </div>
+            <br><br>
+
+            <div class="input-container">
+                
+                <div class="inputBox hidden" id="inicioBox">
+                    <input type="text" id="inicio" name="inicio" class="inputUser" placeholder="Digite (Ex. (1,2))" onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="inicio" class="labelInput">Início X:</label>
+                </div>
+                
+                <div class="inputBox hidden" id="objetivoBox">
+                    <input type="text" id="objetivo" name="objetivo" class="inputUser" placeholder="Digite (Ex. (1,2))" onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="objetivo" class="labelInput">Objetivo X:</label>
+                </div>
+
+                <div class="inputBox hidden" id="obstaculosBox">
+                    <input type="text" id="obstaculos" name="obstaculos" class="inputUser" placeholder="Digite (Ex. 5)" onfocus="removerPlaceholder()" onblur="adicionarPlaceholder()" required>
+                    <label for="obstaculos" class="labelInput">Obstáculos:</label>
+                </div>
+                
             </div>
 
             <!-- Retângulo -->
@@ -240,6 +219,47 @@
             </button>
         </form>
     </div>
+
+    <script>
+        
+        function atualizarCampos() {
+           
+            const metodoSelecionado = document.querySelector('input[name="metodo"]:checked');
+
+            
+            if (!metodoSelecionado) {
+                return;
+            }
+
+            const valorSelecionado = metodoSelecionado.value;
+            
+            
+            const inicioBox = document.getElementById('inicioBox');
+            const objetivoBox = document.getElementById('objetivoBox');
+            const obstaculosBox = document.getElementById('obstaculosBox');
+
+            
+            if (valorSelecionado === 'amplitude' || valorSelecionado === 'aprof_iterativo' || valorSelecionado === 'bidirecional') {
+                
+                inicioBox.classList.remove('hidden');
+                objetivoBox.classList.remove('hidden');
+                obstaculosBox.classList.add('hidden');
+            } else {
+                
+                inicioBox.classList.remove('hidden');
+                objetivoBox.classList.remove('hidden');
+                obstaculosBox.classList.remove('hidden');
+            }
+        }
+
+        
+        document.querySelectorAll('input[name="metodo"]').forEach(radio => {
+            radio.addEventListener('change', atualizarCampos);
+        });
+
+        
+        atualizarCampos();
+    </script>
 
 </body>
 </html>

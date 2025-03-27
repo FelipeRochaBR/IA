@@ -1,39 +1,70 @@
 from main import app
 from flask import render_template, request, redirect
+from backEnd.listaEncadeada import listaDuplaEncadeada as lista
+from backEnd import funcoes_auxiliares as fa
+from backEnd.busca import buscaGrid  
+from backEnd.mainGrid import MainGrid
 
-# rotas
-@app.route("/")
-def Gridpage():
-    return render_template("homepage.html")
+busca = buscaGrid()  
+caminho = [] 
+nx, ny = 10, 15
+mapa = MainGrid.Gera_Problema(nx,ny,qtd=6)
+l_max = 10
 
-# rotas
-@app.route("/", methods=['GET','POST'])
+@app.route("/", methods=['GET', 'POST'])
 def resposta():
+    print(mapa)
     if request.method == 'POST':
-        inicioX = request.form.get("inicioX")
-        inicioY = request.form.get("inicioY")
-        objetivoX = request.form.get("objetivoX")
-        objetivoY = request.form.get("objetivoY")
-        obstaculos = request.form.get("obstaculos")
+      
+        inicio = request.form.get("inicio")
+        objetivo = request.form.get("objetivo")
+        obstaculos = request.form.get("obstaculos") 
         metodo = request.form.get("metodo")
 
-        if inicioX:  
-            try:
-                inicioX = int(inicioX)
-                inicioY = int(inicioY)
-                objetivoX = int(objetivoX) 
-                objetivoY = int(objetivoY) 
-                obstaculos = int(obstaculos) 
-                metodo = str(metodo)
-                print(f"Valor recebido: {inicioX} {inicioY} {objetivoX} {objetivoY} {obstaculos} {metodo}")  
-                return redirect("/") 
-            except ValueError:
-                return "Erro: O valor inserido não é um número válido."
-        else:
-            return "Erro: O campo 'inicio' não foi preenchido."
+        try:
+            # Converte 
+            inicio = list(map(int, inicio.split(',')))
+            objetivo = list(map(int, objetivo.split(',')))
+            obstaculos = int(obstaculos) 
+            metodo = str(metodo)
+
+            
+            print(f"Valor recebido: {inicio} {objetivo} {obstaculos} {metodo}")
+            
+            
+            if metodo == "amplitude":
+                caminho = busca.amplitude(inicio, objetivo, nx, ny, mapa)
+                print(caminho)
+
+            elif metodo == "aprof_iterativo": 
+                caminho = busca.aprof_iterativo(inicio, objetivo, nx, ny, mapa, l_max)
+                print(caminho)
+
+            elif metodo == "bidirecional":
+                caminho = busca.bidirecional(inicio, objetivo, nx, ny, mapa)
+                print(caminho)
+
+            elif metodo == "profundidade":
+                caminho = busca.profundidade(inicio, objetivo, obstaculos, nx, ny, mapa)
+                print(caminho)
+
+            elif metodo == "profundidade_limitada": 
+                caminho = busca.prof_limitada(inicio, objetivo, obstaculos, nx, ny, mapa)
+                print(caminho)
+           
+           
+            else:
+                return "Método de busca inválido." 
+
+            
+            if caminho:
+                
+                return render_template("homepage.html", caminho=caminho)
+            else:
+                return "Caminho não encontrado."
         
-        
-         
-    else: 
-        return render_template("homepage.html")
-        
+        except ValueError:
+            
+            return "Erro: Algum valor inserido não é válido."
+
+    return render_template("homepage.html")
