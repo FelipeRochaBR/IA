@@ -4,164 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Site</title>
-    <style>
-      /* Importa uma fonte moderna */
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
-
-      /* Estilo geral da página */
-      body {
-        font-family: "Poppins", sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        background-color: #dddddd;
-        color: #343f34;
-      }
-
-      /* Centraliza todo o conteúdo */
-      .container {
-        background-color: rgb(255, 255, 255);
-        padding: 50px;
-        border-radius: 10px;
-        width: 90%;
-        max-width: 1000px;
-        text-align: center;
-        margin: 40px auto;
-      }
-
-      h1 {
-        color: #3d4b3d;
-        text-align: left;
-        margin-top: 7px;
-        margin-bottom: 1px; /* Diminui a margem inferior */
-      }
-
-      /* Estilo dos inputs */
-      .input-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-      }
-
-      .inputBox {
-        flex: 1;
-        text-align: left;
-        position: relative;
-      }
-
-      .labelInput {
-        font-size: 14px;
-        color: #323b32;
-        position: absolute;
-        top: -12px;
-        left: 0;
-      }
-
-      .inputUser {
-        background: none;
-        border: none;
-        border-bottom: 1px solid white;
-        outline: none;
-        color: #354135;
-        font-size: 15px;
-        width: 100%;
-        padding: 10px 0;
-        letter-spacing: 2px;
-        border-bottom: 1px solid #2a2e2a;
-      }
-
-      .placeholder {
-        font-size: 7px;
-      }
-
-      /* Retângulo */
-      .rectangle {
-        width: 100%;
-        height: 600px;
-        background: linear-gradient(135deg, #475347, #98b998);
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(255, 255, 255, 0);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 20px 0;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-      /* Botão Play */
-      #submit {
-        background-color: #455545;
-        width: 60px;
-        height: 60px;
-        border: none;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.062);
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: 1px;
-      }
-
-      /* Ícone Play dentro do botão */
-      .play-icon {
-        width: 100%;
-      }
-
-      #submit:hover {
-        background-color: #98b998;
-      }
-
-      #submit:active {
-        transform: scale(0.95);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .radioGroup {
-        width: auto;
-        display: flex;
-        justify-content: space-between; /* Adicionando espaço entre os botões */
-        text-overflow: ellipsis;
-      }
-
-      .radioGroup label {
-        background-color: #98b998;
-        color: rgb(53, 52, 52);
-        padding: 10px 10px;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        flex: 1;
-        margin-right: 10px; /* Espaçamento entre os botões */
-      }
-
-      .radioGroup label:last-child {
-        margin-right: 0;
-      }
-
-      .radioGroup label:hover {
-        background-color: rgb(60, 92, 65);
-        color: rgb(255, 255, 255);
-      }
-
-      .radioGroup input[type="radio"] {
-        display: none;
-      }
-
-      .radioGroup input[type="radio"]:checked + label {
-        background-color: #435243;
-        color: white;
-      }
-
-      .hidden {
-        display: none;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/principal.css') }}"
+    />
   </head>
   <body>
     <div class="container">
@@ -297,12 +143,25 @@
           atualizarCampos();
         </script>
 
-        <!-- Retângulo -->
-        <div class="rectangle">Área de Exibição</div>
+        <div class="rectangle">
+          <div class="grid">
+            {% for i in range(mapa|length) %}
+            <div class="row">
+              {% for j in range(mapa[i]|length) %}
+              <div
+                class="cell {% if mapa[i][j] == 9 %}obstacle{% endif %}"
+                data-row="{{ i }}"
+                data-col="{{ j }}"
+              ></div>
+              {% endfor %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
 
         <!-- Botão Play -->
         <button type="submit" id="submit">
-          <img src="static/pngegg.png" alt="Play" class="play-icon" />
+          <img src="static/img/botao.png" alt="Play" class="play-icon" />
         </button>
       </form>
     </div>

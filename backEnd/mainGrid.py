@@ -14,7 +14,7 @@ class MainGrid(object):
             if mapa[i][j]==0:
                 mapa[i][j] = 9
                 k+=1
-        return mapa
+        return mapa.tolist()
 
 
     # # PROGRAMA PRINCIPAL

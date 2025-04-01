@@ -1,5 +1,5 @@
 from main import app
-from flask import render_template, request, redirect
+from flask import render_template, request, jsonify
 from backEnd.listaEncadeada import listaDuplaEncadeada as lista
 from backEnd import funcoes_auxiliares as fa
 from backEnd.busca import buscaGrid  
@@ -8,7 +8,7 @@ from backEnd.mainGrid import MainGrid
 busca = buscaGrid()  
 caminho = [] 
 nx, ny = 10, 15
-mapa = MainGrid.Gera_Problema(nx,ny,qtd=6)
+mapa = MainGrid.Gera_Problema(nx,ny,qtd=38)
 
 @app.route("/", methods=['GET', 'POST'])
 def resposta():
@@ -56,8 +56,7 @@ def resposta():
 
             
             if caminho:
-                
-                return render_template("homepage.html", caminho=caminho)
+                return render_template("homepage.html", caminho=caminho,mapa=mapa)
             else:
                 return "Caminho não encontrado."
         
@@ -65,4 +64,4 @@ def resposta():
             
             return "Erro: Algum valor inserido não é válido."
 
-    return render_template("homepage.html")
+    return render_template("homepage.html",mapa=mapa)
