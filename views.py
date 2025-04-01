@@ -9,7 +9,6 @@ busca = buscaGrid()
 caminho = [] 
 nx, ny = 10, 15
 mapa = MainGrid.Gera_Problema(nx,ny,qtd=6)
-l_max = 10
 
 @app.route("/", methods=['GET', 'POST'])
 def resposta():
@@ -18,26 +17,25 @@ def resposta():
       
         inicio = request.form.get("inicio")
         objetivo = request.form.get("objetivo")
-        obstaculos = request.form.get("obstaculos") 
         metodo = request.form.get("metodo")
+        if metodo in ['profundidade_limitada', 'aprof_iterativo']:
+            limite = request.form.get("limite")
+            limite = int(limite)  
 
         try:
             # Converte 
             inicio = list(map(int, inicio.split(',')))
             objetivo = list(map(int, objetivo.split(',')))
-            obstaculos = int(obstaculos) 
+            
             metodo = str(metodo)
+            #print(f"Valor recebido: {inicio} {objetivo} {obstaculos} {metodo}")
 
-            
-            print(f"Valor recebido: {inicio} {objetivo} {obstaculos} {metodo}")
-            
-            
             if metodo == "amplitude":
                 caminho = busca.amplitude(inicio, objetivo, nx, ny, mapa)
                 print(caminho)
 
             elif metodo == "aprof_iterativo": 
-                caminho = busca.aprof_iterativo(inicio, objetivo, nx, ny, mapa, l_max)
+                caminho = busca.aprof_iterativo(inicio, objetivo, nx, ny, mapa, limite)
                 print(caminho)
 
             elif metodo == "bidirecional":
@@ -45,11 +43,11 @@ def resposta():
                 print(caminho)
 
             elif metodo == "profundidade":
-                caminho = busca.profundidade(inicio, objetivo, obstaculos, nx, ny, mapa)
+                caminho = busca.profundidade(inicio, objetivo, nx, ny, mapa)
                 print(caminho)
 
             elif metodo == "profundidade_limitada": 
-                caminho = busca.prof_limitada(inicio, objetivo, obstaculos, nx, ny, mapa)
+                caminho = busca.prof_limitada(inicio, objetivo, nx, ny, mapa,limite)
                 print(caminho)
            
            
