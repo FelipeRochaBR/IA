@@ -149,7 +149,7 @@
             <div class="row">
               {% for j in range(mapa[i]|length) %}
               <div
-                class="cell {% if mapa[i][j] == 9 %}obstacle{% endif %}"
+                class="cell {% if mapa[i][j] == 9 %}obstacle{% endif %} {%if [i,j] in caminho %} path {%endif%}"
                 data-row="{{ i }}"
                 data-col="{{ j }}"
               ></div>
@@ -158,11 +158,14 @@
             {% endfor %}
           </div>
         </div>
-
         <!-- Botão Play -->
         <button type="submit" id="submit">
           <img src="static/img/botao.png" alt="Play" class="play-icon" />
         </button>
+
+        <!-- <button type="submit" id="restart">
+          <img src="static/img/reset.png" alt="restart" class="restart-icon" />
+        </button> -->
       </form>
     </div>
   </body>

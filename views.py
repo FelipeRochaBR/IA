@@ -8,7 +8,7 @@ from backEnd.mainGrid import MainGrid
 busca = buscaGrid()  
 caminho = [] 
 nx, ny = 10, 15
-mapa = MainGrid.Gera_Problema(nx,ny,qtd=38)
+mapa = MainGrid.Gera_Problema(nx,ny,qtd=35)
 
 @app.route("/", methods=['GET', 'POST'])
 def resposta():

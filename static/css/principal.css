@@ -33,8 +33,8 @@ h1 {
 .input-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
   gap: 20px;
 }
 
@@ -59,7 +59,7 @@ h1 {
   outline: none;
   color: #354135;
   font-size: 15px;
-  width: 100%;
+  width: 75%;
   padding: 10px 0;
   letter-spacing: 2px;
   border-bottom: 1px solid #2a2e2a;
@@ -82,7 +82,7 @@ h1 {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.062);
-  margin-top: 20px;
+  margin-top: 80px;
   margin-left: auto;
   margin-right: 1px;
 }
@@ -100,6 +100,23 @@ h1 {
   transform: scale(0.95);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* 
+.restart-icon {
+  background-color: #455545;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.062);
+  margin-top: 80px;
+  margin-right: auto;
+} */
 
 .radioGroup {
   width: auto;
@@ -141,11 +158,20 @@ h1 {
   display: none;
 }
 
+.rectangle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .grid {
   display: grid;
-  grid-template-columns: repeat(10, 100px);
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(15, 2fr);
+  grid-template-rows: repeat(15, 2fr);
   gap: 2px;
-  background: green;
+  width: 300px;
+  height: 300px;
 }
 
 .row {
@@ -153,7 +179,7 @@ h1 {
 }
 
 .cell {
-  width: 80px;
+  width: 45px;
   height: 30px;
   border: 1px solid #ccc;
   background: #475347;
@@ -164,4 +190,9 @@ h1 {
 
 .cell.obstacle {
   background-color: black;
+}
+
+.path {
+  background-color: rgb(186, 21, 227);
+  transition: background-color 0.3s ease;
 }
