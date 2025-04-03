@@ -22,13 +22,26 @@ def resposta():
             limite = request.form.get("limite")
             limite = int(limite) 
 
-  
-
         try:
          
             inicio = list(map(int, inicio.split(',')))
             objetivo = list(map(int, objetivo.split(',')))
             metodo = str(metodo)
+              # while True:
+    #            x1  = inicio[0]
+    #            y1 = inicio[1]
+    #            if mapa[x][y]==0:
+    #             break
+    #            origem = [x,y]
+
+    #           while True:
+    #    
+    #            x2 =objetivo=[0]
+    #            y2 = objetivo=[1]
+    #            if mapa[x][y]==0:
+    #             break
+    #           
+    #             objetivo = [x,y]
 
             if metodo == "amplitude":
                 caminho = busca.amplitude(inicio, objetivo, nx, ny, mapa)
