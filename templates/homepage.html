@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Site</title>
+    <title>CarAuto</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/principal.css') }}"
     />
+    <link rel="icon" href="{{ url_for ('static', filename='img/icon.png') }}" />
   </head>
   <body>
     <div class="container">
-      <h1>Grid<br /><br /></h1>
+      <h1>Carro Automático<br /><br /></h1>
 
-      <!-- Campos de entrada -->
-      <form action="/" method="POST">
+      <form id="form" action="/" method="POST">
         <div class="radioGroup">
           <input
             type="radio"
@@ -105,51 +105,13 @@
             <label for="limite" class="labelInput">Limite:</label>
           </div>
         </div>
-        <script>
-          function atualizarCampos() {
-            const metodoSelecionado = document.querySelector(
-              'input[name="metodo"]:checked'
-            );
-
-            if (!metodoSelecionado) {
-              return;
-            }
-
-            const valorSelecionado = metodoSelecionado.value;
-
-            const inicioBox = document.getElementById("inicioBox");
-            const objetivoBox = document.getElementById("objetivoBox");
-            const limite = document.getElementById("limite");
-
-            if (
-              valorSelecionado === "amplitude" ||
-              valorSelecionado === "bidirecional" ||
-              valorSelecionado === "profundidade"
-            ) {
-              inicioBox.classList.remove("hidden");
-              objetivoBox.classList.remove("hidden");
-              limite.classList.add("hidden");
-            } else {
-              inicioBox.classList.remove("hidden");
-              objetivoBox.classList.remove("hidden");
-              limite.classList.remove("hidden");
-            }
-          }
-
-          document.querySelectorAll('input[name="metodo"]').forEach((radio) => {
-            radio.addEventListener("change", atualizarCampos);
-          });
-
-          atualizarCampos();
-        </script>
-
         <div class="rectangle">
           <div class="grid">
             {% for i in range(mapa|length) %}
             <div class="row">
               {% for j in range(mapa[i]|length) %}
               <div
-                class="cell {% if mapa[i][j] == 9 %}obstacle{% endif %} {%if [i,j] in caminho %} path {%endif%}"
+                class="cell {% if mapa[i][j] == 9 %}obstacle{% endif %} {%if [i,j] in caminho %} path {%endif%} {%if [i,j]== inicio %} start {%endif%} {%if [i,j]== objetivo %} end {%endif%}"
                 data-row="{{ i }}"
                 data-col="{{ j }}"
               ></div>
@@ -158,14 +120,33 @@
             {% endfor %}
           </div>
         </div>
-        <!-- Botão Play -->
+
+        <div class="legenda">
+          <span class="quad start"></span>
+          <span>Início: {{ inicio if inicio is defined else 'N/D' }}</span>
+          <span class="quad end"></span>
+          <span
+            >Objetivo: {{ objetivo if objetivo is defined else 'N/D' }}</span
+          >
+          <span class="quad obstacle"></span>
+          <span>Obstaculos</span>
+          <br />
+          <span class="quad path"></span>
+          <span>Caminho: {{ caminho if caminho is defined else 'N/D' }}</span>
+        </div>
         <button type="submit" id="submit">
           <img src="static/img/botao.png" alt="Play" class="play-icon" />
         </button>
-
-        <!-- <button type="submit" id="restart">
-          <img src="static/img/reset.png" alt="restart" class="restart-icon" />
-        </button> -->
+        <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+        {% if mensagem %}
+        <script>
+          alert("{{ mensagem }}");
+        </script>
+        {% endif %} {% if valor %}
+        <script>
+          alert("{{ valor }}");
+        </script>
+        {% endif %}
       </form>
     </div>
   </body>

@@ -8,7 +8,7 @@ from backEnd.mainGrid import MainGrid
 busca = buscaGrid()  
 caminho = [] 
 nx, ny = 10, 15
-mapa = MainGrid.Gera_Problema(nx,ny,qtd=35)
+mapa = MainGrid.Gera_Problema(nx,ny,qtd=26)
 
 @app.route("/", methods=['GET', 'POST'])
 def resposta():
@@ -20,15 +20,15 @@ def resposta():
         metodo = request.form.get("metodo")
         if metodo in ['profundidade_limitada', 'aprof_iterativo']:
             limite = request.form.get("limite")
-            limite = int(limite)  
+            limite = int(limite) 
+
+  
 
         try:
-            # Converte 
+         
             inicio = list(map(int, inicio.split(',')))
             objetivo = list(map(int, objetivo.split(',')))
-            
             metodo = str(metodo)
-            #print(f"Valor recebido: {inicio} {objetivo} {obstaculos} {metodo}")
 
             if metodo == "amplitude":
                 caminho = busca.amplitude(inicio, objetivo, nx, ny, mapa)
@@ -48,17 +48,17 @@ def resposta():
 
             elif metodo == "profundidade_limitada": 
                 caminho = busca.prof_limitada(inicio, objetivo, nx, ny, mapa,limite)
-                print(caminho)
-           
            
             else:
                 return "Método de busca inválido." 
 
             
             if caminho:
-                return render_template("homepage.html", caminho=caminho,mapa=mapa)
+                print(inicio)
+                print(objetivo)
+                return render_template("homepage.html", caminho=caminho,mapa=mapa,inicio=inicio,objetivo=objetivo)
             else:
-                return "Caminho não encontrado."
+                return render_template("homepage.html",mapa=mapa,mensagem='CAMINHO NÃO ENCONTRADO')
         
         except ValueError:
             
