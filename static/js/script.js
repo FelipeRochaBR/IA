@@ -14,17 +14,15 @@ function atualizarCampos() {
   const limite = document.getElementById("limite");
 
   if (
-    valorSelecionado === "amplitude" ||
-    valorSelecionado === "bidirecional" ||
-    valorSelecionado === "profundidade"
+    valorSelecionado === "profundidade_limitada"
   ) {
     inicioBox.classList.remove("hidden");
     objetivoBox.classList.remove("hidden");
-    limite.classList.add("hidden");
+    limite.classList.remove("hidden");
   } else {
     inicioBox.classList.remove("hidden");
     objetivoBox.classList.remove("hidden");
-    limite.classList.remove("hidden");
+    limite.classList.add("hidden");
   }
 }
 

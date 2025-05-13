@@ -43,7 +43,15 @@ def resposta():
     #           
     #             objetivo = [x,y]
 
-            if metodo == "amplitude":
+            if metodo == "aestrela":
+                caminho = busca.aestrela(inicio, objetivo, mapa, nx, ny)
+                print(caminho)
+
+            elif metodo == "aiaestrela":
+                caminho = busca.aiaestrela(inicio, objetivo, mapa, nx, ny, limite=5)
+                print(caminho)
+
+            elif metodo == "amplitude":
                 caminho = busca.amplitude(inicio, objetivo, nx, ny, mapa)
                 print(caminho)
 
@@ -53,6 +61,14 @@ def resposta():
 
             elif metodo == "bidirecional":
                 caminho = busca.bidirecional(inicio, objetivo, nx, ny, mapa)
+                print(caminho)
+
+            elif metodo == "custouniforme":
+                caminho = busca.custouniforme(inicio, objetivo, mapa, nx, ny)
+                print(caminho)
+
+            elif metodo == "greedy":
+                caminho = busca.greedy(inicio, objetivo, mapa, nx, ny)
                 print(caminho)
 
             elif metodo == "profundidade":
