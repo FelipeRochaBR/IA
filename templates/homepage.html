@@ -15,26 +15,8 @@
       <h1>Carro Automático<br /><br /></h1>
 
       <form id="form" action="/" method="POST">
+        <h1 class="title">Grid Sem Peso</h1>
         <div class="radioGroup">
-
-          <input
-            type="radio"
-            id="aestrela"
-            name="metodo"
-            value="aestrela"
-            required
-          />
-          <label for="aestrela">A Estrela</label>
-
-          <input
-          type="radio"
-          id="aiaestrela"
-          name="metodo"
-          value="aiaestrela"
-          required
-        />
-        <label for="aiaestrela">AIA Estrela</label>
-
           <input
             type="radio"
             id="amplitude"
@@ -71,6 +53,41 @@
           />
           <label for="profundidade">Profundidade</label>
 
+          <br />
+          <br />
+          <input
+            type="radio"
+            id="profundidade_limitada"
+            name="metodo"
+            value="profundidade_limitada"
+            required
+          />
+          <label for="profundidade_limitada">Profundidade Limitada</label>
+          <br />
+          <br />
+        </div>
+        <br />
+        <br />
+        <h1 class="title">Grid Com Peso</h1>
+
+        <div class="radioGroup">
+          <input
+            type="radio"
+            id="aestrela"
+            name="metodo"
+            value="aestrela"
+            required
+          />
+          <label for="aestrela">A Estrela</label>
+
+          <input
+            type="radio"
+            id="aiaestrela"
+            name="metodo"
+            value="aiaestrela"
+            required
+          />
+          <label for="aiaestrela">AIA Estrela</label>
           <input
             type="radio"
             id="custouniforme"
@@ -81,22 +98,13 @@
           <label for="custouniforme">Custo Uniforme</label>
 
           <input
-          type="radio"
-          id="greedy"
-          name="metodo"
-          value="greedy"
-          required
-        />
-        <label for="greedy">Greedy</label>
-
-          <input
             type="radio"
-            id="profundidade_limitada"
+            id="greedy"
             name="metodo"
-            value="profundidade_limitada"
+            value="greedy"
             required
           />
-          <label for="profundidade_limitada">Profundidade Limitada</label>
+          <label for="greedy">Greedy</label>
         </div>
         <br /><br />
 
@@ -121,7 +129,7 @@
               id="objetivo"
               name="objetivo"
               class="inputUser"
-              placeholder="Digite (Ex. (1,2))"
+              placeholder="Digite (Ex. (7,6))"
               onfocus="removerPlaceholder()"
               onblur="adicionarPlaceholder()"
               required
@@ -157,7 +165,7 @@
             {% endfor %}
           </div>
         </div>
-
+        <br />
         <div class="legenda">
           <span class="quad start"></span>
           <span>Início: {{ inicio if inicio is defined else 'N/D' }}</span>

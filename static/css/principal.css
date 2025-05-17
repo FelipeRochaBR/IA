@@ -1,7 +1,6 @@
 /* Importa uma fonte moderna */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-/* Estilo geral da página */
 body {
   font-family: "Poppins", sans-serif;
   text-align: center;
@@ -11,7 +10,6 @@ body {
   color: #343f34;
 }
 
-/* Centraliza todo o conteúdo */
 .container {
   background-color: rgb(255, 255, 255);
   padding: 50px;
@@ -26,10 +24,9 @@ h1 {
   color: #3d4b3d;
   text-align: left;
   margin-top: 7px;
-  margin-bottom: 1px; /* Diminui a margem inferior */
+  margin-bottom: 1px;
 }
 
-/* Estilo dos inputs */
 .input-container {
   display: flex;
   justify-content: space-between;
@@ -70,7 +67,6 @@ h1 {
   font-size: 7px;
 }
 
-/* Botão Play */
 #submit {
   background-color: #455545;
   width: 60px;
@@ -103,6 +99,13 @@ h1 {
 
 .restart-icon {
   width: 100px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text: center;
 }
 
 #restart {
@@ -204,6 +207,7 @@ h1 {
 }
 .legenda {
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -226,4 +230,14 @@ h1 {
   width: 15px;
   height: 15px;
   border: 1px solid #000;
+}
+
+.error-message {
+  color: #ff0000;
+  font-weight: bold;
+  margin-top: 80px 0;
+  padding: 10px;
+  background-color: #ffeeee;
+  border: 1px solid #ffcccc;
+  border-radius: 5px;
 }

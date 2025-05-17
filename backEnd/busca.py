@@ -576,7 +576,7 @@ class buscaGrid(object):
                     else:
                         lim_exc.append(v1)
             limite = float(sum(lim_exc)/len(lim_exc))
-        return "Caminho não encontrado", None
+            return "Caminho não encontrado", None
     #------------------------------------------------------------------------------
     def custouniforme(self,inicio,fim,mapa,dim_x,dim_y):  
         l1 = lista()

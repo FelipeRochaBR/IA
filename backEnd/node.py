@@ -7,4 +7,3 @@ class No(object):
         self.v2        = v2
         self.anterior  = anterior
         self.proximo   = proximo
-
